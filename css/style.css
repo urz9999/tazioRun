@@ -1,0 +1,218 @@
+body { background: #222; font-family: 'Press Start 2P', monospace; font-smooth: never; height: 98vh; }
+.hidden { display: none!important; }
+
+/* UI */
+.topUI {
+  position: absolute;
+  z-index: 1000; /* need this cause clip-path changes stack context */
+  transform: translate(-50%, 25px);
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  letter-spacing: 2px;
+  color: #fff;
+  font-size: 17px;
+}
+.topUI::before {
+  display: inline-block;
+  height: 17px;
+  padding: 1px 2px;
+  line-height: 19px;
+  font-size: 17px;
+  background: #fff;
+  text-shadow: none;
+  font-weight: 900;
+  letter-spacing: 0;
+  border-radius: 6px;
+  margin-right: 30px;
+  border: 2px solid #7dd8c9;
+}
+
+#time{ left: 13%; color: #f4f430; }
+#time::before { content: 'TIME'; color: #f57214; }
+
+#score{ left: 38%; }
+#score::before { content: 'SCORE'; color: #a61a9d; }
+
+#lap{ left: 67%; width: 24%; }
+#lap::before { content: 'LAP'; color: #0082df; }
+
+#km{ left: 92%; width: 24%; }
+#km::before { content: 'KM'; color: #7dd8c9; }
+
+#tacho {
+  position: absolute;
+  text-align: right;
+  width: 23%;
+  bottom: 5%;
+  z-index: 2000;
+  color: #e62e13;
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  letter-spacing: 2px;
+  font-size: 23px;
+}
+#tacho::after {
+  content: 'km/h';
+  color: #fab453;
+  font-size: 18px;
+  margin-left: 5px;
+}
+
+#fueltank {
+  position: absolute;
+  text-align: right;
+  width: 25px;
+  height: 202px;
+  bottom: 6%;
+  right: 5%;
+  z-index: 2000;
+  background-color: #333;
+  border-radius: 3px;
+}
+#fueltank::after {
+  content: 'ltr';
+  color: #fab453;
+  font-size: 18px;
+  margin-left: 5px;
+  position: absolute;
+  top: 183px;
+  left: -66px;
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+}
+#fueltank .fuelreserve { position: absolute; left: 1px; right: 1px; background-color: #f2f2f2; height: 6px; border-radius: 3px; }
+
+/*
+  road
+*/
+#game {
+  position: relative;
+  margin: 0 auto;
+  overflow:hidden;
+  background: #222;
+  user-select:none;
+  transition: opacity 10s;
+}
+#road {
+  transition: opacity 2s;
+  transition-timing-function: steps(8, end);
+}
+#road * {
+  position: absolute;
+  image-rendering: pixelated;
+}
+#tazio {
+  background-repeat: no-repeat;
+  background-position: -110px 0;
+  z-index: 2000;
+  transform: scale(1.4)
+}
+#cloud {
+  background-size: auto 100%;
+  width: 100%;
+  height: 57%;
+}
+
+/*
+  home
+*/
+#road {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+#home {
+  position: absolute;
+  color: #fff;
+  width: 100%;
+  height: 100%;
+
+  z-index: 1000; /* need this cause clip-path changes stack context */
+}
+
+#highscore {
+  position: absolute;
+  width: 100%;
+  height: 20%;
+  bottom: 0;
+  column-count: 3;
+  column-fill: auto;
+}
+
+#highscore * {
+  color: #9e95a8;
+  margin: 0 0 6px 27px;
+}
+
+#levels {
+  color: #fff;
+  width: 1280px;
+  height: 700px;
+  margin: 0 auto;
+  text-align: center;
+  z-index: 1000; /* need this cause clip-path changes stack context */
+}
+
+#levels p { text-align: center; }
+
+#levels button {
+  border: 2px solid #868686;
+  border-radius: 5px;
+  padding: 7px;
+  margin-right: 10px;
+  display: inline-block;
+  background: #222;
+  color: #868686;
+  font-family: 'Press Start 2P', monospace;
+  position: relative;
+  top: 400px;
+  display: inline-block;
+}
+
+#levels button img { width: 250px; height: 250px; }
+
+h1 {
+  position: absolute;
+  left: 50%;
+  top: 25%;
+  transform: translate(-50%, -50%);
+  font-size: 5em;
+  color: #25d8b1;
+}
+
+#text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.2em;
+  color: #d9bbf3;
+  text-shadow: 0 0 black, 0 2px black, 2px 0 black, 0 0 black;
+}
+
+.blink{animation: blinker 2s steps(4, end) infinite}
+@keyframes blinker {
+  50% {opacity: 0}
+}
+
+/*
+  Guide
+*/
+#controls {
+  color: #868686;
+  font-size: 13px;
+  line-height: 13px;
+  margin: 10px;
+  text-align: center;
+}
+#controls > span {
+  margin-left: 20px;
+}
+#controls > span > span {
+  border: 2px solid #868686;
+  border-radius: 5px;
+  padding: 7px;
+  margin-right: 10px;
+  display: inline-block;
+}
+#controls > span:last-child  > span {
+  transform: rotate(90deg);
+}
